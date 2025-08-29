@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ParageBragdon - Premium Horse Care Products</title>
+    <title>EquiCare - Premium Horse Care Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Global Styles */
@@ -322,6 +322,107 @@
         .product-actions {
             display: flex;
             gap: 10px;
+        }
+        
+        /* Product Details Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .product-modal {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .product-modal {
+            transform: translateY(0);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .modal-image {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .modal-details h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .modal-usage {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .modal-usage h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
         }
         
         /* Cart Sidebar */
@@ -688,6 +789,10 @@
             .cart-sidebar {
                 width: 350px;
             }
+            
+            .modal-content {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -726,6 +831,10 @@
                 width: 100%;
                 right: -100%;
             }
+            
+            .product-actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -734,7 +843,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo"><i class="fas fa-horse-head"></i>Parage<span>Bragdon</span></a>
+                <a href="#" class="logo"><i class="fas fa-horse-head"></i>Equi<span>Care</span></a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -754,6 +863,16 @@
             </nav>
         </div>
     </header>
+
+    <!-- Product Details Modal -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="product-modal">
+            <button class="close-modal" id="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-content" id="modal-content">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cart-overlay"></div>
@@ -786,11 +905,11 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About ParageBragdon</h2>
+            <h2 class="section-title">About EquiCare</h2>
             <div class="about-content">
                 <div class="about-text">
                     <h3>Our Mission</h3>
-                    <p>At ParageBragdon, we're passionate about providing the highest quality hoof care products for horses. Our formulations are developed by equine specialists with years of experience in veterinary care and farriery.</p>
+                    <p>At EquiCare, we're passionate about providing the highest quality hoof care products for horses. Our formulations are developed by equine specialists with years of experience in veterinary care and farriery.</p>
                     <p>All our products are made with natural ingredients, carefully selected for their effectiveness in promoting hoof health, preventing infections, and supporting overall equine wellness.</p>
                     <p>We understand that your horse's health is paramount, which is why we've dedicated ourselves to creating solutions that truly work.</p>
                     <a href="#products" class="btn" style="margin-top: 20px;">Explore Products</a>
@@ -825,43 +944,43 @@
             <div class="testimonials-container">
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        ""
+                        "Artimud has completely transformed my horse's hoof health. After just a few applications, I noticed a significant improvement in the condition of his hooves."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Sarah Johnson</h4>
+                            <p>Professional Equestrian</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        ""
+                        "As a farrier with over 20 years of experience, I recommend EquiCare products to all my clients. The results speak for themselves."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Brown">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Michael Brown</h4>
+                            <p>Master Farrier</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        ""
+                        "I've tried many hoof care products over the years, but none have been as effective as Hoof Stuff. It's now a staple in my barn."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Davis">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Emily Davis</h4>
+                            <p>Horse Breeder</p>
                         </div>
                     </div>
                 </div>
@@ -901,7 +1020,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>gabrielle.bragdon@hotmail.ca</p>
+                            <p>info@equicare.com</p>
                         </div>
                     </div>
                 </div>
@@ -931,7 +1050,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Parage<span>Bragdon</span></div>
+                    <div class="footer-logo">Equi<span>Care</span></div>
                     <p>Providing premium hoof care products for healthier, happier horses.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -970,52 +1089,75 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ParageBragdon. All rights reserved.</p>
+                <p>&copy; 2023 EquiCare. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Product data
+        // Product data with complete details
         const productData = {
             "Artimud 300g": {
                 price: 30.00,
-                description: "Artimud est un produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains. Il est idéal pour remplir les seimes externe et les crevasses peu profondes de la ligne blanche.",
+                description: "Artimud est un produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains.",
+                fullDescription: "Artimud est un produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains. Il est idéal pour remplir les seimes externe et les crevasses peu profondes de la ligne blanche. Grâce à sa consistance épaisse, il restera en place plus longtemps que la plupart des produits ce qui permet aux agents de protection de travailler plus longtemps et empêche les saletés et impuretés d'y entrer. Il est aussi utilisé sous des pads pour garder la sole et la fourchette en santé durant un cycle de ferrage.",
+                usage: "Pour les crevasses ou seimes plus profondes et mince, nous vous recommandons d'utiliser le Hoof-stuff.",
                 image: "https://via.placeholder.com/600x400?text=Artimud+300g"
             },
             "Artimud 750g": {
                 price: 65.00,
-                description: "Artimud 750g est une version plus grande du produit à base d'argile verte, idéal pour un usage prolongé. Il offre les mêmes avantages que l'Artimud 300g, éliminant bactéries et champignons tout en favorisant la santé des tissus.",
+                description: "Artimud 750g est une version plus grande du produit à base d'argile verte, idéal pour un usage prolongé.",
+                fullDescription: "Artimud 750g est une version plus grande du produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Il offre les mêmes avantages que l'Artimud 300g, éliminant bactéries et champignons tout en favorisant la santé des tissus. Idéal pour remplir les seimes externes et les crevasses peu profondes de la ligne blanche.",
+                usage: "Grâce à sa consistance épaisse, il restera en place plus longtemps que la plupart des produits. Pour les crevasses ou seimes plus profondes et minces, nous vous recommandons d'utiliser le Hoof-stuff.",
                 image: "https://via.placeholder.com/600x400?text=Artimud+750g"
             },
             "Hoof Stuff": {
                 price: 35.00,
-                description: "Hoof Stuff est conçu pour les crevasses et seimes plus profondes et minces. Il aide à protéger et renforcer les structures internes du sabot.",
+                description: "Hoof Stuff est conçu pour les crevasses et seimes plus profondes et minces.",
+                fullDescription: "Hood Stuff est un produit à base de miel, de minéraux naturels et de fibres naturelles. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains. Il est idéal pour remplir les seimes, les crevasses profondes de la ligne blanche et une lacune centrale profonde due à une pourriture de fourchette.",
+                usage: "Grâce à sa consistance fibreuse et collante, il reste en place facilement ce qui permet aux agents de protection de travailler plus longtemps et empêche les saletés et impuretés d'entrer dans les fentes. Pour les crevasses ou seimes moins profondes essayez Artimud.",
                 image: "https://via.placeholder.com/600x400?text=Hoof+Stuff"
             },
             "Field Paste 750g": {
                 price: 45.00,
                 description: "Field Paste 750g est un produit polyvalent pour le soin des sabots, offrant protection et hydratation.",
+                fullDescription: "Field Paste est un produit à base d'argile, de miel, de minéraux naturels et d'huiles essentiels. Il nettoie et revitalise le dessous du pieds du cheval, aidant ainsi la fourchette et la sole a rester forte et en bonne santé.",
+                usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
                 image: "https://via.placeholder.com/600x400?text=Field+Paste+750g"
+            },
+            "Field Paste 1800g": {
+                price: 75.00,
+                description: "Field Paste 1800g est la version économique pour un usage intensif ou pour plusieurs chevaux.",
+                fullDescription: "Field Paste est un produit à base d'argile, de miel, de minéraux naturels et d'huiles essentiels. Il nettoie et revitalise le dessous du pieds du cheval, aidant ainsi la fourchette et la sole a rester forte et en bonne santé.",
+                usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
+                image: "https://via.placeholder.com/600x400?text=Field+Paste+1800g"
             },
             "HoneyHeel 100ml": {
                 price: 25.00,
-                description: "HoneyHeel 100ml est une pommade à base de miel pour traiter les infections et favoriser la guérison des sabots.",
+                description: "HoneyHeel 100ml est une pommade à base de miel pour traiter les infections et favoriser la guérison.",
+                fullDescription: "HoneyHeel est un produit à base de miel, de minéraux naturels, de jus d'aloe vera et d'agents naturels qui rallentissent la cristallisation du miel. C'est une crème riche et apaisante qui offre une barrière protectrice sur les blessures mineures et favorise le processus naturel de cicatrisation.",
+                usage: "Les ingrédients de Honeyheel favorisent la formation naturelle de tissus sains. Sa consistance collante l'aide à rester en place, permettant aux agents actifs de rester en contact avec la peau. Peut être utiliser pour traiter la gale de boue, comme écran solaire, pour soigner des blessures mineures, etc. Note : Le miel pourrait se cristalliser, si cela arrive, réchauffer un peu le produit et mélanger.",
                 image: "https://via.placeholder.com/600x400?text=HoneyHeel+100ml"
             },
             "Sole Cleanse 500ml": {
                 price: 30.00,
-                description: "Sole Cleanse 500ml est un spray nettoyant pour la sole et la fourchette, éliminant les bactéries et les impuretés.",
+                description: "Sole Cleanse 500ml est un spray nettoyant pour la sole et la fourchette.",
+                fullDescription: "Sole Cleanse est un spray qui nettoie la fourchette et la sole pour réduire et prévenir les mauvaises odeurs et la dégradation des tissus. Son application favorise la croissance de tissus sains.",
+                usage: "Il peut être utiliser hebdomadairement ou à chaque fois que les sabots sont curés pour prévenir la pourriture de fourchette. On peut aussi s'en servir pour nettoyer, désinfecter et vider les fissures et crevasses de la fourchette, de la ligne blanche ou autre avant l'application de Artimud, Hoof-Stuff ou Field Paste.",
                 image: "https://via.placeholder.com/600x400?text=Sole+Cleanse+500ml"
             },
             "Stronghorn 500ml": {
                 price: 40.00,
-                description: "Stronghorn 500ml renforce la corne du sabot pour une meilleure résistance et durabilité.",
+                description: "Stronghorn 500ml renforce la corne du sabot pour une meilleure résistance.",
+                fullDescription: "Stronghorn est un produit en spray qui nourrit et renforce les tissus et la corne en plus d'être un agent nettoyant très puissant. Aide à diminuer la sensibilité de la sole dans des périodes humides ou celle-ci ce ramollie ou chez des chevaux ayant une sole sensible.",
+                usage: "Vaporiser sur la sole en évitant la fourchette sauf si celle-ci est très molle. Appliquer quotidiennement jusqu'à remarquer une amélioration puis appliquer hebdomadairement par la suite. Pour de meilleurs résultats, laisser sécher avant de sortir le cheval.",
                 image: "https://via.placeholder.com/600x400?text=Stronghorn+500ml"
             },
             "Ear Balm 500ml": {
                 price: 45.00,
-                description: "Ear Balm 500ml est un produit apaisant pour le soin des oreilles des chevaux, réduisant les irritations.",
+                description: "Ear Balm 500ml est un produit apaisant pour le soin des oreilles des chevaux.",
+                fullDescription: "Ear Balm est un baume apaisant pour les chevaux qui contient des huiles et beurres naturels qui aident à garder les oreilles et le visage des chevaux hydratés et confortables pendant les mois secs de l'été.",
+                usage: "Il peut être utilisé sur n'importe quelle partie de la peau du cheval pour hydrater et apaiser les irritations. Ne pas l'appliquer trop près des yeux. Appliquer toutes les 24 a 48 heures.",
                 image: "https://via.placeholder.com/600x400?text=Ear+Balm+500ml"
             }
         };
@@ -1033,6 +1175,9 @@
         const cartTotal = document.getElementById('cart-total');
         const cartCount = document.querySelector('.cart-count');
         const checkoutBtn = document.getElementById('checkout-btn');
+        const productModal = document.getElementById('product-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalContent = document.getElementById('modal-content');
         
         // Initialize the page
         function init() {
@@ -1053,7 +1198,7 @@
                     <div class="product-info">
                         <h3 class="product-title">${name}</h3>
                         <div class="product-price">$${data.price.toFixed(2)}</div>
-                        <p class="product-description">${data.description.substring(0, 100)}...</p>
+                        <p class="product-description">${data.description}</p>
                         <div class="product-actions">
                             <button class="btn add-to-cart" data-name="${name}" data-price="${data.price}">Add to Cart</button>
                             <button class="btn btn-outline view-details" data-name="${name}">Details</button>
@@ -1062,6 +1207,40 @@
                 `;
                 productsGrid.appendChild(productCard);
             }
+        }
+        
+        // Show product details modal
+        function showProductDetails(name) {
+            const product = productData[name];
+            if (!product) return;
+            
+            modalContent.innerHTML = `
+                <div class="modal-image">
+                    <img src="${product.image}" alt="${name}">
+                </div>
+                <div class="modal-details">
+                    <h2>${name}</h2>
+                    <div class="modal-price">$${product.price.toFixed(2)}</div>
+                    <div class="modal-description">
+                        <p>${product.fullDescription}</p>
+                    </div>
+                    <div class="modal-usage">
+                        <h3>Usage Instructions</h3>
+                        <p>${product.usage}</p>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn add-to-cart-modal" data-name="${name}" data-price="${product.price}">Add to Cart</button>
+                    </div>
+                </div>
+            `;
+            
+            productModal.classList.add('active');
+            
+            // Add event listener to the modal's add to cart button
+            document.querySelector('.add-to-cart-modal').addEventListener('click', function() {
+                addToCart(name, product.price);
+                productModal.classList.remove('active');
+            });
         }
         
         // Set up event listeners
@@ -1085,6 +1264,18 @@
                 cartOverlay.classList.remove('active');
             });
             
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                productModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            productModal.addEventListener('click', function(e) {
+                if (e.target === productModal) {
+                    productModal.classList.remove('active');
+                }
+            });
+            
             // Add to cart buttons
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('add-to-cart')) {
@@ -1095,7 +1286,7 @@
                 
                 if (e.target.classList.contains('view-details')) {
                     const name = e.target.getAttribute('data-name');
-                    alert(`${name}\n\n${productData[name].description}`);
+                    showProductDetails(name);
                 }
             });
             
