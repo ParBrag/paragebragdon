@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - Parage Bragdon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Parage Bragdon</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="products.html">Produits</a>
+            <a href="cart.html">Panier</a>
+            <a href="history.html" id="history-link" style="display: none;">Historique</a>
+            <a href="admin.html" id="admin-link" style="display: none;">Admin</a>
+            <button id="search-toggle">Rechercher</button>
+            <button id="login-toggle">Connexion</button>
+            <button id="signup-toggle">Inscription</button>
+            <button id="logout-button" style="display: none;">Déconnexion</button>
+        </nav>
+        <div id="search-container" style="display: none;">
+            <input type="text" id="search-input" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+        </div>
+        <div id="login-container" style="display: none;">
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required aria-label="Nom d'utilisateur">
+                <input type="password" id="password" placeholder="Mot de passe" required aria-label="Mot de passe">
+                <button type="submit">Connexion</button>
+            </form>
+        </div>
+        <div id="signup-container" style="display: none;">
+            <form id="signup-form">
+                <input type="text" id="signup-username" placeholder="Nom d'utilisateur" required aria-label="Nom d'utilisateur">
+                <input type="email" id="signup-email" placeholder="Email" required aria-label="Email">
+                <input type="password" id="signup-password" placeholder="Mot de passe" required aria-label="Mot de passe">
+                <button type="submit">Inscription</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        <section id="history">
+            <h2>Votre Historique de Commandes</h2>
+            <p id="no-orders" style="display: none;">Aucune commande trouvée.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                        <th>Détails</th>
+                        <th>Statut Paiement</th>
+                        <th>ID Paiement</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-body"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="cookie-notice">
+        <p>Nous utilisons des cookies pour améliorer votre expérience. <button id="accept-cookies">Accepter</button></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Parage Bragdon. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
