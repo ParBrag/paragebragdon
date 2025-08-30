@@ -179,7 +179,6 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
         }
         
         .hero h1 {
@@ -312,12 +311,16 @@
         .product-image {
             height: 200px;
             overflow: hidden;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
         
@@ -415,12 +418,17 @@
         .modal-image {
             border-radius: 10px;
             overflow: hidden;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
         }
         
         .modal-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         
         .modal-details h2 {
@@ -433,7 +441,7 @@
             font-weight: bold;
             color: var(--dark);
             margin-bottom: 20px;
-        }
+}
         
         .modal-description {
             margin-bottom: 20px;
@@ -483,12 +491,16 @@
             height: 250px;
             position: relative;
             cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
         
@@ -564,12 +576,16 @@
             border-radius: 5px;
             overflow: hidden;
             margin-right: 15px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .cart-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
         
         .cart-item-details {
@@ -1063,35 +1079,35 @@
             <h2 class="section-title">Product Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="Artimud_300g.png" alt="Artimud 300g">
+                    <div class="placeholder-text">Artimud 300g</div>
                     <div class="gallery-caption">Artimud 300g</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="Artimud_750g.png" alt="Artimud 750g">
+                    <div class="placeholder-text">Artimud 750g</div>
                     <div class="gallery-caption">Artimud 750g</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="Hoof-Stuff.png" alt="Hoof Stuff">
+                    <div class="placeholder-text">Hoof Stuff</div>
                     <div class="gallery-caption">Hoof Stuff</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="2020.png" alt="Field Paste">
+                    <div class="placeholder-text">Field Paste</div>
                     <div class="gallery-caption">Field Paste</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="HoneyHeel.png" alt="HoneyHeel">
+                    <div class="placeholder-text">HoneyHeel</div>
                     <div class="gallery-caption">HoneyHeel</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="SolePaint.png" alt="Sole Cleanse">
+                    <div class="placeholder-text">Sole Cleanse</div>
                     <div class="gallery-caption">Sole Cleanse</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="20221116_133410 (2).png" alt="Stronghorn">
+                    <div class="placeholder-text">Stronghorn</div>
                     <div class="gallery-caption">Stronghorn</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="Ear Barm 500ml.png" alt="Ear Balm">
+                    <div class="placeholder-text">Ear Balm</div>
                     <div class="gallery-caption">Ear Balm</div>
                 </div>
             </div>
@@ -1109,7 +1125,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <img src="Katherine Harberd.jpg" alt="Sarah Johnson">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
                         </div>
                         <div class="author-details">
                             <h4>Sarah Johnson</h4>
@@ -1235,7 +1251,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href#about">About</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -1295,7 +1311,7 @@
                 price: 45.00,
                 description: "Field Paste 750g is a versatile product for hoof care.",
                 fullDescription: "Field Paste est un produit à base d'argile, de miel, de minéraux naturels et d'huiles essentiels. Il nettoie et revitalise le dessous du pieds du cheval, aidant ainsi la fourchette et la sole a rester forte et en bonne santé.",
-                usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
+                usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchetette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
                 image: "2020.png",
                 category: "treatments"
             },
@@ -1327,7 +1343,7 @@
                 price: 40.00,
                 description: "Stronghorn 500ml strengthens the horn of the hoof.",
                 fullDescription: "Stronghorn est un produit en spray qui nourrit et renforce les tissus et la corne en plus d'être un agent nettoyant très puissant. Aide à diminuer la sensibilité de la sole dans des périodes humides ou celle-ci ce ramollie ou chez des chevaux ayant une sole sensible.",
-                usage: "Vaporiser sur la sole en évitant la fourchetette sauf si celle-ci est très molle. Appliquer quotidiennement jusqu'à remarquer une amélioration puis appliquer hebdomadairement par la suite. Pour de meilleurs résultats, laisser sécher avant de sortir le cheval.",
+                usage: "Vaporiser sur la sole en évitant la fourchette sauf si celle-ci est très molle. Appliquer quotidiennement jusqu'à remarquer une amélioration puis appliquer hebdomadairement par la suite. Pour de meilleurs résultats, laisser sécher avant de sortir le cheval.",
                 image: "20221116_133410 (2).png",
                 category: "treatments"
             },
@@ -1360,6 +1376,7 @@
         const filterBtns = document.querySelectorAll('.filter-btn');
         const productFilters = document.querySelectorAll('.product-filter');
         const contactForm = document.getElementById('contact-form');
+        const galleryItems = document.querySelectorAll('.gallery-item');
         
         // Initialize the page
         function init() {
@@ -1377,9 +1394,15 @@
                 
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+                
+                // Create product image or placeholder
+                const imageHtml = data.image ? 
+                    `<img src="${data.image}" alt="${name}" onerror="this.parentNode.innerHTML='<div class=\'placeholder-text\'>${name}</div>'">` :
+                    `<div class="placeholder-text">${name}</div>`;
+                
                 productCard.innerHTML = `
                     <div class="product-image">
-                        <img src="${data.image}" alt="${name}">
+                        ${imageHtml}
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${name}</h3>
@@ -1400,9 +1423,14 @@
             const product = productData[name];
             if (!product) return;
             
+            // Create product image or placeholder for modal
+            const imageHtml = product.image ? 
+                `<img src="${product.image}" alt="${name}" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\'placeholder-text\'>${name}</div>'">` :
+                `<div class="placeholder-text">${name}</div>`;
+            
             modalContent.innerHTML = `
                 <div class="modal-image">
-                    <img src="${product.image}" alt="${name}">
+                    ${imageHtml}
                 </div>
                 <div class="modal-details">
                     <h2>${name}</h2>
@@ -1557,11 +1585,16 @@
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 
+                // Create product image or placeholder for cart
+                const imageHtml = productData[item.name].image ? 
+                    `<img src="${productData[item.name].image}" alt="${item.name}" onerror="this.style.display='none'">` :
+                    '';
+                
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
                 cartItem.innerHTML = `
                     <div class="cart-item-image">
-                        <img src="${productData[item.name].image}" alt="${item.name}">
+                        ${imageHtml}
                     </div>
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.name}</div>
