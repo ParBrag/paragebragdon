@@ -179,6 +179,7 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
         }
         
         .hero h1 {
@@ -228,9 +229,40 @@
             transform: scale(1.05);
         }
         
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f2fa 100%);
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
         /* Products Section */
         .products {
-            background: linear-gradient(135deg, #f6f9fc 0%, #e9f2fa 100%);
+            background: white;
         }
         
         .products-filter {
@@ -425,6 +457,61 @@
             gap: 15px;
         }
         
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .gallery .section-title {
+            color: white;
+        }
+        
+        .gallery .section-title:after {
+            background: var(--accent);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
         /* Cart Sidebar */
         .cart-sidebar {
             position: fixed;
@@ -572,16 +659,7 @@
         
         /* Testimonials Section */
         .testimonials {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-        
-        .testimonials .section-title {
-            color: white;
-        }
-        
-        .testimonials .section-title:after {
-            background: var(--accent);
+            background: var(--light);
         }
         
         .testimonials-container {
@@ -591,10 +669,10 @@
         }
         
         .testimonial-card {
-            background: rgba(255,255,255,0.1);
+            background: white;
             padding: 30px;
             border-radius: 10px;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .testimonial-text {
@@ -700,10 +778,16 @@
             font-weight: 700;
             margin-bottom: 15px;
             color: white;
+            display: flex;
+            align-items: center;
         }
         
         .footer-logo span {
             color: var(--accent);
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
         }
         
         .social-links {
@@ -835,6 +919,10 @@
             .product-actions {
                 flex-direction: column;
             }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
         }
     </style>
 </head>
@@ -847,7 +935,9 @@
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#products">Products</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
@@ -892,11 +982,11 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Premium Care for Your Equine Partners</h1>
-                <p>Discover our range of specialized hoof care products designed to keep your horses healthy and performing at their best.</p>
+                <h1>Premium Hoof Care for Your Equine Partners</h1>
+                <p>Specialized products and services to keep your horses healthy and performing at their best</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn">Shop Products</a>
-                    <a href="#about" class="btn btn-outline">Learn More</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
                 </div>
             </div>
         </div>
@@ -909,7 +999,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>Our Mission</h3>
-                    <p>At ParageBragdon, we're passionate about providing the highest quality hoof care products for horses. Our formulations are developed by equine specialists with years of experience in veterinary care and farriery.</p>
+                    <p>At ParageBragdon, we're passionate about providing the highest quality hoof care products and services for horses. Our formulations are developed with years of experience in equine care and farriery.</p>
                     <p>All our products are made with natural ingredients, carefully selected for their effectiveness in promoting hoof health, preventing infections, and supporting overall equine wellness.</p>
                     <p>We understand that your horse's health is paramount, which is why we've dedicated ourselves to creating solutions that truly work.</p>
                     <a href="#products" class="btn" style="margin-top: 20px;">Explore Products</a>
@@ -921,18 +1011,89 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-horse"></i>
+                    </div>
+                    <h3>Physiological Trimming</h3>
+                    <p>I offer physiological trimming services that respect the function of each structure of your horse's hooves.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Hoof Care</h3>
+                    <p>Committed to offering the best for my clients, I've become a distributor of Red Horse products.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Service Areas</h3>
+                    <p>Serving Terrebonne/Mascouche area on the North Shore of Montreal. Remote areas (30min-1h travel) also available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
             <div class="products-filter">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">Hoof Care</button>
-                <button class="filter-btn">Treatments</button>
-                <button class="filter-btn">Cleansers</button>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hoof-care">Hoof Care</button>
+                <button class="filter-btn" data-filter="treatments">Treatments</button>
+                <button class="filter-btn" data-filter="cleansers">Cleansers</button>
             </div>
             <div class="products-grid" id="products-grid">
                 <!-- Products will be added here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Product Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="Artimud_300g.png" alt="Artimud 300g">
+                    <div class="gallery-caption">Artimud 300g</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Artimud_750g.png" alt="Artimud 750g">
+                    <div class="gallery-caption">Artimud 750g</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Hoof-Stuff.png" alt="Hoof Stuff">
+                    <div class="gallery-caption">Hoof Stuff</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="2020.png" alt="Field Paste">
+                    <div class="gallery-caption">Field Paste</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="HoneyHeel.png" alt="HoneyHeel">
+                    <div class="gallery-caption">HoneyHeel</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="SolePaint.png" alt="Sole Cleanse">
+                    <div class="gallery-caption">Sole Cleanse</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="20221116_133410 (2).png" alt="Stronghorn">
+                    <div class="gallery-caption">Stronghorn</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Ear Barm 500ml.png" alt="Ear Balm">
+                    <div class="gallery-caption">Ear Balm</div>
+                </div>
             </div>
         </div>
     </section>
@@ -948,39 +1109,39 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
+                            <img src="Katherine Harberd.jpg" alt="Sarah Johnson">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Sarah Johnson</h4>
+                            <p>Professional Equestrian</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        ""
+                        "As a farrier with over 20 years of experience, I recommend ParageBragdon products to all my clients. The results speak for themselves."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Brown">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Michael Brown</h4>
+                            <p>Master Farrier</p>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
-                        ""
+                        "I've tried many hoof care products over the years, but none have been as effective as Hoof Stuff. It's now a staple in my barn."
                     </div>
                     <div class="testimonial-author">
                         <div class="author-image">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Davis">
                         </div>
                         <div class="author-details">
-                            <h4></h4>
-                            <p></p>
+                            <h4>Emily Davis</h4>
+                            <p>Horse Breeder</p>
                         </div>
                     </div>
                 </div>
@@ -995,14 +1156,14 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>We'd Love to Hear From You</h3>
-                    <p>Have questions about our products or need advice on hoof care? Our team of experts is here to help.</p>
+                    <p>Have questions about our products or need advice on hoof care? Contact us for expert guidance.</p>
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Address</h4>
-                            <p>123 Stable Lane, Equestria, EQ 12345</p>
+                            <h4>Service Area</h4>
+                            <p>Terrebonne/Mascouche, North Shore of Montreal</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1011,7 +1172,7 @@
                         </div>
                         <div>
                             <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
+                            <p>Available upon request</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1023,9 +1184,18 @@
                             <p>gabrielle.bragdon@hotmail.ca</p>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h4>Pricing</h4>
+                            <p>$55 for local service, $65 for remote areas (30min-1h travel)</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" class="form-control" required>
@@ -1033,6 +1203,10 @@
                         <div class="form-group">
                             <label for="email">Your Email</label>
                             <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
@@ -1050,13 +1224,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Parage<span>Bragdon</span></div>
-                    <p>Providing premium hoof care products for healthier, happier horses.</p>
+                    <div class="footer-logo"><i class="fas fa-horse-head"></i>Parage<span>Bragdon</span></div>
+                    <p>Providing premium hoof care products and services for healthier, happier horses.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1064,18 +1236,17 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
                     <h3>Products</h3>
                     <ul>
-                        <li><a href="#">Hoof Care</a></li>
-                        <li><a href="#">Treatments</a></li>
-                        <li><a href="#">Cleansers</a></li>
-                        <li><a href="#">Supplements</a></li>
+                        <li><a href="#" class="product-filter" data-filter="hoof-care">Hoof Care</a></li>
+                        <li><a href="#" class="product-filter" data-filter="treatments">Treatments</a></li>
+                        <li><a href="#" class="product-filter" data-filter="cleansers">Cleansers</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1084,7 +1255,6 @@
                         <li><a href="#">Shipping & Returns</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
@@ -1095,70 +1265,79 @@
     </footer>
 
     <script>
-        // Product data with complete details
+        // Product data with complete details and image paths
         const productData = {
             "Artimud 300g": {
                 price: 30.00,
-                description: "Artimud est un produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains.",
+                description: "Artimud is a product based on green clay, honey, natural minerals and essential oils.",
                 fullDescription: "Artimud est un produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains. Il est idéal pour remplir les seimes externe et les crevasses peu profondes de la ligne blanche. Grâce à sa consistance épaisse, il restera en place plus longtemps que la plupart des produits ce qui permet aux agents de protection de travailler plus longtemps et empêche les saletés et impuretés d'y entrer. Il est aussi utilisé sous des pads pour garder la sole et la fourchette en santé durant un cycle de ferrage.",
                 usage: "Pour les crevasses ou seimes plus profondes et mince, nous vous recommandons d'utiliser le Hoof-stuff.",
-                image: "https://via.placeholder.com/600x400?text=Artimud+300g"
+                image: "Artimud_300g.png",
+                category: "hoof-care"
             },
             "Artimud 750g": {
                 price: 65.00,
-                description: "Artimud 750g est une version plus grande du produit à base d'argile verte, idéal pour un usage prolongé.",
+                description: "Artimud 750g is a larger version of the green clay-based product.",
                 fullDescription: "Artimud 750g est une version plus grande du produit à base d'argile verte, de miel, de minéraux naturels et d'huiles essentiels. Il offre les mêmes avantages que l'Artimud 300g, éliminant bactéries et champignons tout en favorisant la santé des tissus. Idéal pour remplir les seimes externes et les crevasses peu profondes de la ligne blanche.",
                 usage: "Grâce à sa consistance épaisse, il restera en place plus longtemps que la plupart des produits. Pour les crevasses ou seimes plus profondes et minces, nous vous recommandons d'utiliser le Hoof-stuff.",
-                image: "https://via.placeholder.com/600x400?text=Artimud+750g"
+                image: "Artimud_750g.png",
+                category: "hoof-care"
             },
             "Hoof Stuff": {
                 price: 35.00,
-                description: "Hoof Stuff est conçu pour les crevasses et seimes plus profondes et minces.",
+                description: "Hoof Stuff is designed for deeper and thinner cracks and seams.",
                 fullDescription: "Hood Stuff est un produit à base de miel, de minéraux naturels et de fibres naturelles. Ses agents actifs naturels éliminent les bactéries et les champignons tout en favorisant la formation de tissus sains. Il est idéal pour remplir les seimes, les crevasses profondes de la ligne blanche et une lacune centrale profonde due à une pourriture de fourchette.",
                 usage: "Grâce à sa consistance fibreuse et collante, il reste en place facilement ce qui permet aux agents de protection de travailler plus longtemps et empêche les saletés et impuretés d'entrer dans les fentes. Pour les crevasses ou seimes moins profondes essayez Artimud.",
-                image: "https://via.placeholder.com/600x400?text=Hoof+Stuff"
+                image: "Hoof-Stuff.png",
+                category: "hoof-care"
             },
             "Field Paste 750g": {
                 price: 45.00,
-                description: "Field Paste 750g est un produit polyvalent pour le soin des sabots, offrant protection et hydratation.",
+                description: "Field Paste 750g is a versatile product for hoof care.",
                 fullDescription: "Field Paste est un produit à base d'argile, de miel, de minéraux naturels et d'huiles essentiels. Il nettoie et revitalise le dessous du pieds du cheval, aidant ainsi la fourchette et la sole a rester forte et en bonne santé.",
                 usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
-                image: "https://via.placeholder.com/600x400?text=Field+Paste+750g"
+                image: "2020.png",
+                category: "treatments"
             },
             "Field Paste 1800g": {
                 price: 75.00,
-                description: "Field Paste 1800g est la version économique pour un usage intensif ou pour plusieurs chevaux.",
+                description: "Field Paste 1800g is the economical version for intensive use.",
                 fullDescription: "Field Paste est un produit à base d'argile, de miel, de minéraux naturels et d'huiles essentiels. Il nettoie et revitalise le dessous du pieds du cheval, aidant ainsi la fourchette et la sole a rester forte et en bonne santé.",
                 usage: "Ses ingrédients favorisent la croissance naturelle des tissus sains, en particulier lorsqu'on le frotte bien sur la surface de la fourchette. Les agents actifs aident également les tissus du sabot et de la fourchette à se durcir sans être corrosifs ou dommageables. La consistance épaisse et pâteuse permet à Field Paste de rester dans les lacunes du pied plus longtemps que les solutions liquides. Idéal pour le traitement de la pourriture de fourchette.",
-                image: "https://via.placeholder.com/600x400?text=Field+Paste+1800g"
+                image: "2020.png",
+                category: "treatments"
             },
             "HoneyHeel 100ml": {
                 price: 25.00,
-                description: "HoneyHeel 100ml est une pommade à base de miel pour traiter les infections et favoriser la guérison.",
+                description: "HoneyHeel 100ml is a honey-based ointment to treat infections.",
                 fullDescription: "HoneyHeel est un produit à base de miel, de minéraux naturels, de jus d'aloe vera et d'agents naturels qui rallentissent la cristallisation du miel. C'est une crème riche et apaisante qui offre une barrière protectrice sur les blessures mineures et favorise le processus naturel de cicatrisation.",
                 usage: "Les ingrédients de Honeyheel favorisent la formation naturelle de tissus sains. Sa consistance collante l'aide à rester en place, permettant aux agents actifs de rester en contact avec la peau. Peut être utiliser pour traiter la gale de boue, comme écran solaire, pour soigner des blessures mineures, etc. Note : Le miel pourrait se cristalliser, si cela arrive, réchauffer un peu le produit et mélanger.",
-                image: "https://via.placeholder.com/600x400?text=HoneyHeel+100ml"
+                image: "HoneyHeel.png",
+                category: "treatments"
             },
             "Sole Cleanse 500ml": {
                 price: 30.00,
-                description: "Sole Cleanse 500ml est un spray nettoyant pour la sole et la fourchette.",
+                description: "Sole Cleanse 500ml is a cleaning spray for the sole and frog.",
                 fullDescription: "Sole Cleanse est un spray qui nettoie la fourchette et la sole pour réduire et prévenir les mauvaises odeurs et la dégradation des tissus. Son application favorise la croissance de tissus sains.",
                 usage: "Il peut être utiliser hebdomadairement ou à chaque fois que les sabots sont curés pour prévenir la pourriture de fourchette. On peut aussi s'en servir pour nettoyer, désinfecter et vider les fissures et crevasses de la fourchette, de la ligne blanche ou autre avant l'application de Artimud, Hoof-Stuff ou Field Paste.",
-                image: "https://via.placeholder.com/600x400?text=Sole+Cleanse+500ml"
+                image: "SolePaint.png",
+                category: "cleansers"
             },
             "Stronghorn 500ml": {
                 price: 40.00,
-                description: "Stronghorn 500ml renforce la corne du sabot pour une meilleure résistance.",
+                description: "Stronghorn 500ml strengthens the horn of the hoof.",
                 fullDescription: "Stronghorn est un produit en spray qui nourrit et renforce les tissus et la corne en plus d'être un agent nettoyant très puissant. Aide à diminuer la sensibilité de la sole dans des périodes humides ou celle-ci ce ramollie ou chez des chevaux ayant une sole sensible.",
-                usage: "Vaporiser sur la sole en évitant la fourchette sauf si celle-ci est très molle. Appliquer quotidiennement jusqu'à remarquer une amélioration puis appliquer hebdomadairement par la suite. Pour de meilleurs résultats, laisser sécher avant de sortir le cheval.",
-                image: "https://via.placeholder.com/600x400?text=Stronghorn+500ml"
+                usage: "Vaporiser sur la sole en évitant la fourchetette sauf si celle-ci est très molle. Appliquer quotidiennement jusqu'à remarquer une amélioration puis appliquer hebdomadairement par la suite. Pour de meilleurs résultats, laisser sécher avant de sortir le cheval.",
+                image: "20221116_133410 (2).png",
+                category: "treatments"
             },
             "Ear Balm 500ml": {
                 price: 45.00,
-                description: "Ear Balm 500ml est un produit apaisant pour le soin des oreilles des chevaux.",
+                description: "Ear Balm 500ml is a soothing product for horse ear care.",
                 fullDescription: "Ear Balm est un baume apaisant pour les chevaux qui contient des huiles et beurres naturels qui aident à garder les oreilles et le visage des chevaux hydratés et confortables pendant les mois secs de l'été.",
                 usage: "Il peut être utilisé sur n'importe quelle partie de la peau du cheval pour hydrater et apaiser les irritations. Ne pas l'appliquer trop près des yeux. Appliquer toutes les 24 a 48 heures.",
-                image: "https://via.placeholder.com/600x400?text=Ear+Balm+500ml"
+                image: "Ear Barm 500ml.png",
+                category: "treatments"
             }
         };
 
@@ -1178,6 +1357,9 @@
         const productModal = document.getElementById('product-modal');
         const closeModal = document.getElementById('close-modal');
         const modalContent = document.getElementById('modal-content');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productFilters = document.querySelectorAll('.product-filter');
+        const contactForm = document.getElementById('contact-form');
         
         // Initialize the page
         function init() {
@@ -1187,8 +1369,12 @@
         }
         
         // Render products to the page
-        function renderProducts() {
+        function renderProducts(filter = 'all') {
+            productsGrid.innerHTML = '';
+            
             for (const [name, data] of Object.entries(productData)) {
+                if (filter !== 'all' && data.category !== filter) continue;
+                
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
                 productCard.innerHTML = `
@@ -1308,6 +1494,35 @@
             document.querySelector('.hamburger').addEventListener('click', function() {
                 document.querySelector('.nav-links').classList.toggle('active');
             });
+            
+            // Filter buttons
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    renderProducts(filter);
+                });
+            });
+            
+            // Product filter links in footer
+            productFilters.forEach(filter => {
+                filter.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const filterValue = this.getAttribute('data-filter');
+                    renderProducts(filterValue);
+                    window.scrollTo({ top: document.getElementById('products').offsetTop - 100, behavior: 'smooth' });
+                });
+            });
+            
+            // Contact form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message! This is a demo form.');
+                    contactForm.reset();
+                });
+            }
         }
         
         // Add product to cart
